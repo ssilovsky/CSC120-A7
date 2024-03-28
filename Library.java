@@ -107,13 +107,20 @@ public class Library extends Building {
 
   }
 
+  public void showOptions() {
+    super.showOptions();
+    System.out.println(
+        " + addTitle() \n + removeTitle() \n + checkOut() \n + returnBook() \n + containsTitle() \n + isAvailable() \n + printCollection()");
+  }
+
   public static void main(String[] args) {
     Library l = new Library("Neilson", "Some Address", 4);
     l.addTitle("Othello by Shakespeare");
     l.addTitle("Jason Derulo by Jason D");
     l.printCollection();
     l.containsTitle("Othello by Shakespeare");
-    l.isAvailable("Othello by Shakepeare");
+    // l.isAvailable("Othello by Shakepeare");
+    l.showOptions();
   }
 
 }
