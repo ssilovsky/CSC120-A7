@@ -45,10 +45,18 @@ public class CampusMap {
 
     public static void main(String[] args) {
         CampusMap myMap = new CampusMap();
-        myMap.addBuilding(new Building("Ford Hall", "100 Green Street Northampton, MA 01063", 4));
-        myMap.addBuilding(new Building("Bass Hall", "4 Tyler Court Northampton, MA 01063", 4));
+        myMap.addBuilding(new Building("Ford Hall", "100 Green Street Northampton, MA 01063", 4, true));
+        myMap.addBuilding(new Building("Bass Hall", "4 Tyler Court Northampton, MA 01063", 4, true));
         myMap.addBuilding(new Cafe("Compass Cafe", "Some Address", 4));
         myMap.addBuilding(new House("Lamont", "100 Green Street", 2, true, true));
+        myMap.addBuilding(new House("Hubbard", "111 Green St.", 6, false, false));
+        myMap.addBuilding(new Library("Neilson Library", "Library Ave", 5, true));
+        myMap.addBuilding(new Building("Seelye Hall", "200 Green Street", 5, false));
+        myMap.addBuilding(new Cafe("Campus Center Cafe", "Coffee Blvd", 1));
+        myMap.addBuilding(new House("Ziskind", "Yummy Food Ave", 4, true, true));
+        myMap.addBuilding(new Building("Schacht Center", "Healthy Street", 2, false));
+        myMap.addBuilding(new House("Tyler", "300 Green Street", 4, true, false));
+        myMap.addBuilding(new Library("Hillyer Art Library", "20 Elm Street", 5, true));
         System.out.println(myMap);
     }
 

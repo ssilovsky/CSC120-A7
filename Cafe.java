@@ -13,6 +13,14 @@ public class Cafe extends Building {
         this.nCups = 1;
     }
 
+    public Cafe(){
+        this("Cafe Name", "Some Address", 1);
+        this.nCoffeeOunces = 2;
+        this.nSugarPackets = 3;
+        this.nCreams = 4;
+        this.nCups = 1;
+    }
+
     /**
      * Sells coffee and removes the coffee, sugar, cream, and cup used
      * 
@@ -48,6 +56,18 @@ public class Cafe extends Building {
         System.out.println("Successfully restocked.");
     }
 
+    public void goToFloor(int floorNum){
+        if (floorNum == 1) {
+            System.out.println("You're already on the first floor!");
+        } else{
+            System.out.println("The cafe only has one floor sorry!");
+        }
+    }
+
+    public void enterNewRoom(){
+        throw new RuntimeException("Whoopsie you can only stay in the main cafe!");
+    }
+
     public void showOptions() {
         super.showOptions();
         System.out.println(" + sellCoffee() \n + restock()");
@@ -56,7 +76,9 @@ public class Cafe extends Building {
     public static void main(String[] args) {
         Cafe c = new Cafe("Compass Cafe", "Some Address", 2);
         c.sellCoffee(12, 2, 3);
+        c.goToFloor(2);
         c.showOptions();
+        c.enterNewRoom();
     }
 
 }

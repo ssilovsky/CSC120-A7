@@ -4,8 +4,13 @@ public class Library extends Building {
 
   private Hashtable<String, Boolean> collection;
 
-  public Library(String name, String address, int nFloors) {
-    super(name, address, nFloors);
+  public Library(String name, String address, int nFloors, boolean hasElevator) {
+    super(name, address, nFloors, hasElevator);
+    this.collection = new Hashtable<String, Boolean>();
+  }
+
+  public Library(){
+    this("Some Library", "Some Address", 2, true);
     this.collection = new Hashtable<String, Boolean>();
   }
 
@@ -107,6 +112,16 @@ public class Library extends Building {
 
   }
 
+  public void enterNewRoom(String roomType, boolean isQuietRoom){
+    if (isQuietRoom) {
+      System.out.println("Shhhh. Be quiet.");
+      super.enterNewRoom(roomType);
+    } else{
+      super.enterNewRoom(roomType);
+    }
+  }
+
+
   public void showOptions() {
     super.showOptions();
     System.out.println(
@@ -114,13 +129,13 @@ public class Library extends Building {
   }
 
   public static void main(String[] args) {
-    Library l = new Library("Neilson", "Some Address", 4);
+    Library l = new Library("Neilson", "Some Address", 4, true);
     l.addTitle("Othello by Shakespeare");
     l.addTitle("Jason Derulo by Jason D");
     l.printCollection();
     l.containsTitle("Othello by Shakespeare");
-    // l.isAvailable("Othello by Shakepeare");
     l.showOptions();
+    l.enterNewRoom("Quiet Room", true);
   }
 
 }

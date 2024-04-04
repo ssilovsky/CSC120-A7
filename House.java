@@ -4,14 +4,17 @@ public class House extends Building {
 
   private ArrayList<String> residents; // The <String> tells Java what kind of data we plan to store IN the ArrayList
   private boolean hasDiningRoom;
-  private boolean hasElevator;
+
 
   public House(String name, String address, int nFloors, boolean hasDiningRoom, boolean hasElevator) {
-    super(name, address, nFloors);
+    super(name, address, nFloors, hasElevator);
     this.hasDiningRoom = hasDiningRoom;
-    this.hasElevator = hasElevator;
     this.residents = new ArrayList<String>();
+  }
 
+  public House(){
+    this("House Name", "Some Address", 1, false, false);
+    this.residents = new ArrayList<String>();
   }
 
   /**
@@ -94,6 +97,14 @@ public class House extends Building {
     System.out.println(" + hasDiningRoom() \n + nResidents() \n + moveIn() \n + moveOut() \n + isResident()");
   }
 
+  public void enterNewRoom(String roomType, boolean isBedroom){
+    if (isBedroom) {
+      System.out.println("Hmm, don't enter this room unless it is your bedroom.");
+    } else{
+      super.enterNewRoom(roomType);
+    }
+  }
+
   /**
    * Example of house class
    */
@@ -105,6 +116,10 @@ public class House extends Building {
     h.moveOut("Sam");
     h.moveOut("Jason");
     h.showOptions();
+    h.enter();
+    h.goToFloor(1);
+    h.goToFloor(2);
+
 
   }
 
