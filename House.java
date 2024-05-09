@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class House extends Building {
 
@@ -92,6 +93,23 @@ public class House extends Building {
     return this.residents.contains(person);
   }
 
+  /**
+   * Check if an ArrayList of people are members of a house / Overload method.
+   * @param persons ArrayList<String> People you want to check are residents
+   * @return Hashtable, key = person's name, value = whether they are a resident
+   */
+  public Hashtable<String, Boolean> isResident(ArrayList<String> persons){
+    Hashtable<String, Boolean> isResidentHash = new Hashtable<>();
+    for (int i = 0; i < persons.size(); i++){
+      if (this.residents.contains(persons.get(i))) {
+        isResidentHash.put(persons.get(i), true);
+      } else{
+        isResidentHash.put(persons.get(i), false);
+      }
+    }
+    return isResidentHash;
+  }
+
   public void showOptions() {
     super.showOptions();
     System.out.println(" + hasDiningRoom() \n + nResidents() \n + moveIn() \n + moveOut() \n + isResident()");
@@ -114,11 +132,15 @@ public class House extends Building {
     h.moveIn("Jason");
     h.isResident("Jason");
     h.moveOut("Sam");
-    h.moveOut("Jason");
     h.showOptions();
     h.enter();
     h.goToFloor(1);
     h.goToFloor(2);
+    ArrayList<String> listR = new ArrayList<String>();
+    listR.add("Jason");
+    listR.add("Jess");
+    listR.add("Sam");
+    System.out.println(h.isResident(listR));
 
 
   }

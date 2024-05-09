@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class Library extends Building {
@@ -100,6 +101,23 @@ public class Library extends Building {
     }
   }
 
+  /**
+   * Check if an ArrayList of books are available / Overload method.
+   * @param books
+   * @return Hashtable, key = book title, value = whether the book is available
+   */
+  public Hashtable<String, Boolean> isAvailable(ArrayList<String> books){
+    Hashtable<String, Boolean> isAvailableHash = new Hashtable<>();
+    for (int i = 0; i < books.size(); i++){
+      if (this.collection.containsKey(books.get(i)) && this.collection.get(books.get(i))) {
+        isAvailableHash.put(books.get(i), true);
+      } else {
+        isAvailableHash.put(books.get(i), false);
+      }
+    }
+    return isAvailableHash;
+  }
+
 
   /**
    * Prints collection keys and values
@@ -133,6 +151,11 @@ public class Library extends Building {
     l.containsTitle("Othello by Shakespeare");
     l.showOptions();
     l.enterNewRoom("Quiet Room", true);
+    ArrayList<String> listA = new ArrayList<String>();
+    listA.add("Othello by Shakespeare");
+    listA.add("Jason Derulo by Jason D");
+    listA.add("Sharks and Stuff by Davey Jones");
+    System.out.println(l.isAvailable(listA));
   }
 
 }
