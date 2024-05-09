@@ -1,3 +1,10 @@
+/**
+ * This is the Cafe class.
+ * 
+ * @author Sophia Silovsky
+ * @version 1.0
+ * @since 2024-04-03
+ */
 public class Cafe extends Building {
 
     private int nCoffeeOunces; // The number of ounces of coffee remaining in inventory
@@ -5,6 +12,13 @@ public class Cafe extends Building {
     private int nCreams; // The number of "splashes" of cream remaining in inventory
     private int nCups; // The number of cups remaining in inventory
 
+    /**
+     * Cafe constructor
+     * 
+     * @param name    String
+     * @param address String
+     * @param nFloors int
+     */
     public Cafe(String name, String address, int nFloors) {
         super(name, address, nFloors);
         this.nCoffeeOunces = 2;
@@ -13,7 +27,10 @@ public class Cafe extends Building {
         this.nCups = 1;
     }
 
-    public Cafe(){
+    /**
+     * Default Cafe Constructor
+     */
+    public Cafe() {
         this("Cafe Name", "Some Address", 1);
         this.nCoffeeOunces = 2;
         this.nSugarPackets = 3;
@@ -56,11 +73,10 @@ public class Cafe extends Building {
         System.out.println("Successfully restocked.");
     }
 
-    
     /**
      * Restocks with set default amount of 20 items each / Overload method
      */
-    private void restock(){
+    private void restock() {
         this.nCoffeeOunces = this.nCoffeeOunces + 20;
         this.nSugarPackets = this.nSugarPackets + 20;
         this.nCreams = this.nCreams + 20;
@@ -68,18 +84,27 @@ public class Cafe extends Building {
         System.out.println("Successfully restocked.");
     }
 
-    public void goToFloor(int floorNum){
+    /**
+     * Overload from goToFloor since patrons can't go past first floor
+     */
+    public void goToFloor(int floorNum) {
         if (floorNum == 1) {
             System.out.println("You're already on the first floor!");
-        } else{
+        } else {
             System.out.println("Patrons can only access the first floor.");
         }
     }
 
-    public void enterNewRoom(){
+    /**
+     * Overload since there is only one room in a cafe
+     */
+    public void enterNewRoom() {
         throw new RuntimeException("Whoopsie you can only stay in the main cafe!");
     }
 
+    /**
+     * Print the options available
+     */
     public void showOptions() {
         super.showOptions();
         System.out.println(" + sellCoffee()");

@@ -1,3 +1,10 @@
+
+/**
+* This is the Library class.
+* @author  Sophia Silovsky
+* @version 1.0
+* @since   2024-04-03
+*/
 import java.util.ArrayList;
 import java.util.Hashtable;
 
@@ -5,12 +12,23 @@ public class Library extends Building {
 
   private Hashtable<String, Boolean> collection;
 
+  /**
+   * Library Constructor
+   * 
+   * @param name        String
+   * @param address     String
+   * @param nFloors     int
+   * @param hasElevator boolean
+   */
   public Library(String name, String address, int nFloors, boolean hasElevator) {
     super(name, address, nFloors, hasElevator);
     this.collection = new Hashtable<String, Boolean>();
   }
 
-  public Library(){
+  /**
+   * Default Library Constructor
+   */
+  public Library() {
     this("Some Library", "Some Address", 2, true);
     this.collection = new Hashtable<String, Boolean>();
   }
@@ -103,12 +121,13 @@ public class Library extends Building {
 
   /**
    * Check if an ArrayList of books are available / Overload method.
+   * 
    * @param books
    * @return Hashtable, key = book title, value = whether the book is available
    */
-  public Hashtable<String, Boolean> isAvailable(ArrayList<String> books){
+  public Hashtable<String, Boolean> isAvailable(ArrayList<String> books) {
     Hashtable<String, Boolean> isAvailableHash = new Hashtable<>();
-    for (int i = 0; i < books.size(); i++){
+    for (int i = 0; i < books.size(); i++) {
       if (this.collection.containsKey(books.get(i)) && this.collection.get(books.get(i))) {
         isAvailableHash.put(books.get(i), true);
       } else {
@@ -118,7 +137,6 @@ public class Library extends Building {
     return isAvailableHash;
   }
 
-
   /**
    * Prints collection keys and values
    */
@@ -127,16 +145,24 @@ public class Library extends Building {
 
   }
 
-  public void enterNewRoom(String roomType, boolean isQuietRoom){
+  /**
+   * Library overload with if the room is a Quiet Room
+   * 
+   * @param roomType    String
+   * @param isQuietRoom boolean
+   */
+  public void enterNewRoom(String roomType, boolean isQuietRoom) {
     if (isQuietRoom) {
       System.out.println("Shhhh. Be quiet.");
       super.enterNewRoom(roomType);
-    } else{
+    } else {
       super.enterNewRoom(roomType);
     }
   }
 
-
+  /**
+   * Print the options available
+   */
   public void showOptions() {
     super.showOptions();
     System.out.println(

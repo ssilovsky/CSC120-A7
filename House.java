@@ -1,3 +1,10 @@
+
+/**
+* This is the House class.
+* @author  Sophia Silovsky
+* @version 1.0
+* @since   2024-04-03
+*/
 import java.util.ArrayList;
 import java.util.Hashtable;
 
@@ -6,14 +13,25 @@ public class House extends Building {
   private ArrayList<String> residents; // The <String> tells Java what kind of data we plan to store IN the ArrayList
   private boolean hasDiningRoom;
 
-
+  /**
+   * House constructor
+   * 
+   * @param name          String
+   * @param address       String
+   * @param nFloors       int
+   * @param hasDiningRoom boolean
+   * @param hasElevator   boolean
+   */
   public House(String name, String address, int nFloors, boolean hasDiningRoom, boolean hasElevator) {
     super(name, address, nFloors, hasElevator);
     this.hasDiningRoom = hasDiningRoom;
     this.residents = new ArrayList<String>();
   }
 
-  public House(){
+  /**
+   * Default House Constructor
+   */
+  public House() {
     this("House Name", "Some Address", 1, false, false);
     this.residents = new ArrayList<String>();
   }
@@ -51,6 +69,19 @@ public class House extends Building {
       desc += "It has an elevator. ";
     }
     return desc;
+  }
+
+  /**
+   * Move to floor depending on whether a house has an elevator
+   * 
+   * @param floorNum int, what floor user wants to go to
+   */
+  public void goToFloor(int floorNum) {
+    if (hasElevator) {
+      super.goToFloor(floorNum);
+    } else {
+      System.out.println("Sorry this house does not have an elevator. Use goUp() or goDown() instead.");
+    }
   }
 
   /**
@@ -95,30 +126,40 @@ public class House extends Building {
 
   /**
    * Check if an ArrayList of people are members of a house / Overload method.
+   * 
    * @param persons ArrayList<String> People you want to check are residents
    * @return Hashtable, key = person's name, value = whether they are a resident
    */
-  public Hashtable<String, Boolean> isResident(ArrayList<String> persons){
+  public Hashtable<String, Boolean> isResident(ArrayList<String> persons) {
     Hashtable<String, Boolean> isResidentHash = new Hashtable<>();
-    for (int i = 0; i < persons.size(); i++){
+    for (int i = 0; i < persons.size(); i++) {
       if (this.residents.contains(persons.get(i))) {
         isResidentHash.put(persons.get(i), true);
-      } else{
+      } else {
         isResidentHash.put(persons.get(i), false);
       }
     }
     return isResidentHash;
   }
 
+  /**
+   * Print the options available
+   */
   public void showOptions() {
     super.showOptions();
     System.out.println(" + hasDiningRoom() \n + nResidents() \n + moveIn() \n + moveOut() \n + isResident()");
   }
 
-  public void enterNewRoom(String roomType, boolean isBedroom){
+  /**
+   * House overload with if the room is a bedroom
+   * 
+   * @param roomType  String
+   * @param isBedroom boolean
+   */
+  public void enterNewRoom(String roomType, boolean isBedroom) {
     if (isBedroom) {
       System.out.println("Hmm, don't enter this room unless it is your bedroom.");
-    } else{
+    } else {
       super.enterNewRoom(roomType);
     }
   }
@@ -127,7 +168,7 @@ public class House extends Building {
    * Example of house class
    */
   public static void main(String[] args) {
-    House h = new House("Lamont", "100 Green Street", 2, true, true);
+    House h = new House("Lamont", "100 Green Street", 2, true, false);
     System.out.println(h);
     h.moveIn("Jason");
     h.isResident("Jason");
@@ -141,7 +182,6 @@ public class House extends Building {
     listR.add("Jess");
     listR.add("Sam");
     System.out.println(h.isResident(listR));
-
 
   }
 
