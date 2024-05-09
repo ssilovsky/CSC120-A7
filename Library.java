@@ -91,18 +91,15 @@ public class Library extends Building {
    * @return boolean if title is available to check out
    */
   public boolean isAvailable(String title) {
-    if (this.collection.containsKey(title)) {
-      if (this.collection.get(title)) {
-        System.out.println(title + " is available.");
-      } else {
-        System.out.println(title + " is not available.");
-      }
-
+    if (this.collection.containsKey(title) && this.collection.get(title)) {
+      System.out.println(title + " is available.");
+      return true;
     } else {
-      System.out.println(title + " is not in the library.");
+      System.out.println(title + " is not available.");
+      return false;
     }
-    return this.collection.get(title);
   }
+
 
   /**
    * Prints collection keys and values

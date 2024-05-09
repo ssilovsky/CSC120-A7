@@ -56,11 +56,23 @@ public class Cafe extends Building {
         System.out.println("Successfully restocked.");
     }
 
+    
+    /**
+     * Restocks with set default amount of 20 items each / Overload method
+     */
+    private void restock(){
+        this.nCoffeeOunces = this.nCoffeeOunces + 20;
+        this.nSugarPackets = this.nSugarPackets + 20;
+        this.nCreams = this.nCreams + 20;
+        this.nCups = this.nCups + 20;
+        System.out.println("Successfully restocked.");
+    }
+
     public void goToFloor(int floorNum){
         if (floorNum == 1) {
             System.out.println("You're already on the first floor!");
         } else{
-            System.out.println("The cafe only has one floor sorry!");
+            System.out.println("Patrons can only access the first floor.");
         }
     }
 
@@ -70,7 +82,7 @@ public class Cafe extends Building {
 
     public void showOptions() {
         super.showOptions();
-        System.out.println(" + sellCoffee() \n + restock()");
+        System.out.println(" + sellCoffee()");
     }
 
     public static void main(String[] args) {
@@ -79,6 +91,7 @@ public class Cafe extends Building {
         c.goToFloor(2);
         c.showOptions();
         c.enterNewRoom();
+        c.restock();
     }
 
 }
